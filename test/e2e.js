@@ -1,4 +1,4 @@
-// Bonsai Lab smoke / e2e test. Loads index.html over file:// (no server), drives the real UI with clicks and taps.
+// Tiny Print Shop smoke / e2e test. Loads index.html over file:// (no server), drives the real UI with clicks and taps.
 //   node test/e2e.js            (screenshots -> test/shots/)
 // Covers: no console errors, start season, assign orders by tapping, buy a printer, every problem type raised + fixed via
 // the chat-bubble UI, shop + upgrade map, cat, rent, season end + summary, research, save persistence (meta + mid-season),

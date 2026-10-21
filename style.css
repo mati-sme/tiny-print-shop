@@ -1,4 +1,4 @@
-/* Bonsai Lab - warm, cozy, chunky UI. Cream cards, cocoa ink, papaya accents. Icons are drawn in code (js/icons.js). */
+/* Tiny Print Shop - warm, cozy, chunky UI. Cream cards, cocoa ink, papaya accents. Icons are drawn in code (js/icons.js). */
 @font-face { font-family: 'Fredoka'; src: url('fonts/fredoka.woff') format('woff'); font-weight: 300 700; font-display: swap; }
 :root { --bg: #2a1a10; --cream: #fff4e2; --cream2: #f6e3c4; --ink: #3a2414; --dim: #8a6a50; --papaya: #FF8000; --papaya2: #ff9a33; --green: #3fae4a; --red: #e0473c; --line: #c9a27a; --trayW: 340px; }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }

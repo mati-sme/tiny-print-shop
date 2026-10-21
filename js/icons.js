@@ -1,4 +1,4 @@
-/* Bonsai Lab - every UI icon, drawn in code (no emoji, no image files). Chunky "sticker" style with a cocoa outline and
+/* Tiny Print Shop - every UI icon, drawn in code (no emoji, no image files). Chunky "sticker" style with a cocoa outline and
  * isometric boxes where it makes sense, to match the canvas scene. Icons are drawn once per size into a cached canvas;
  * the DOM uses them as CSS background images (html()), the scene blits them (draw()). Order icons ("o:<template>")
  * are the same little 3D models that grow on the build plates (js/models.js). */

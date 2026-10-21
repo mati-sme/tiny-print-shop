@@ -1,4 +1,4 @@
-/* Bonsai Lab - little isometric 3D models of every printable order, built from boxes, cylinders and frustums.
+/* Tiny Print Shop - little isometric 3D models of every printable order, built from boxes, cylinders and frustums.
  * The same models are drawn on the build plates (sliced at the current layer height, so prints really grow),
  * in the order cards and as icons. Model units: footprint within about [-1, 1], z up to `h`. */
 (function (root) {

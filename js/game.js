@@ -1,4 +1,4 @@
-/* Bonsai Lab - UI controller: game loop, input, HUD, goal chain, tutorial, sheets, the "Hey, I have this issue!" popup,
+/* Tiny Print Shop - UI controller: game loop, input, HUD, goal chain, tutorial, sheets, the "Hey, I have this issue!" popup,
  * maps, saving and the platform (CrazyGames) gameplay state. */
 (function (root) {
 'use strict';
@@ -20,7 +20,12 @@ const run = () => meta && meta.run;
 /* ---------- save ---------- */
 function load() {
   let m = null;
-  try { const raw = PF.storage.get(D.SAVE_KEY); if (raw) m = JSON.parse(raw); } catch (e) { m = null; }
+  try {
+    let raw = PF.storage.get(D.SAVE_KEY);
+    // migrate a save from the game's earlier name (same data, older key)
+    for (const k of D.OLD_SAVE_KEYS || []) { if (raw) break; raw = PF.storage.get(k); if (raw) { PF.storage.set(D.SAVE_KEY, raw); PF.storage.remove(k); } }
+    if (raw) m = JSON.parse(raw);
+  } catch (e) { m = null; }
   meta = C.fixMeta(m);
   meta._fresh = !m;
   if (meta.run && (meta.run.over || meta.run.v !== 1)) meta.run = null;
@@ -778,7 +783,7 @@ function renderMore() {
     <h2>${ic('music')} Sound</h2><div class="toggles"><button class="btn toggle" id="mMusic"></button><button class="btn toggle" id="mSfx"></button></div>
     <h2>${ic('notebook')} Save</h2><p class="small">Saved on this device automatically (also mid-season).</p>
     <div class="row2"><button class="btn danger" id="mReset">${ic('trash')} Reset everything</button></div>
-    <p class="small">Bonsai Lab v${D.VERSION}. Drawn with Canvas, sound synthesized with WebAudio, no downloads.</p>`;
+    <p class="small">Tiny Print Shop v${D.VERSION}. Drawn with Canvas, sound synthesized with WebAudio, no downloads.</p>`;
   paintToggles();
   $('mMusic').onclick = () => toggleSetting('music');
   $('mSfx').onclick = () => toggleSetting('sfx');

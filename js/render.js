@@ -1,4 +1,4 @@
-/* Bonsai Lab - cozy isometric garage, drawn entirely in code on a 2D canvas.
+/* Tiny Print Shop - cozy isometric garage, drawn entirely in code on a 2D canvas.
  * World units are tiles: x runs along the back wall (down-right on screen), y comes toward the viewer (down-left), z is up. */
 (function (root) {
 'use strict';
@@ -128,8 +128,8 @@ function drawRoom(L, run, dayT) {
   onSideFace(0, 5.3, 3.05, () => {
     ctx.fillStyle = '#2b2b2e'; rrect(0, 0, 2.2, 0.66, 0.08); ctx.fill();
     ctx.fillStyle = D.PAPAYA; rrect(0.05, 0.05, 2.1, 0.56, 0.06); ctx.fill();
-    ctx.fillStyle = '#fff7ea'; ctx.font = `700 ${L.lab >= 1 ? 0.22 : 0.32}px ${FONT}`; ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
-    ctx.fillText(L.lab >= 1 ? 'BONSAI WORKSHOP' : 'BONSAI LAB', 1.1, 0.34);
+    ctx.fillStyle = '#fff7ea'; ctx.font = `700 0.23px ${FONT}`; ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
+    ctx.fillText(L.lab >= 1 ? 'PRINT WORKSHOP' : 'TINY PRINT SHOP', 1.1, 0.34);
   });
   // calendar / rent sheet
   onFrontFace(L.RW * 0.72, 0, 2.7, () => {
@@ -168,12 +168,12 @@ function drawShelf(L, run) {
     if (n > 0) yy += 0.08;
     spots.push(m);
   }
-  // little bonsai on the shelf end
+  // a little potted plant on the shelf end
   const bx = 0.3, by = y1 - 0.25;
   box(bx - 0.14, by - 0.12, z + 0.08, 0.28, 0.24, 0.12, '#b8642a');
   const top = P(bx, by, z + 0.25);
-  ctx.strokeStyle = '#6b4226'; ctx.lineWidth = K * 0.05; ctx.beginPath(); ctx.moveTo(top[0], top[1]); ctx.quadraticCurveTo(top[0] + K * 0.12, top[1] - K * 0.2, top[0] - K * 0.02, top[1] - K * 0.38); ctx.stroke();
-  for (const [dx, dy, r] of [[-0.12, -0.42, 0.16], [0.12, -0.36, 0.14], [0, -0.52, 0.13]]) { ctx.fillStyle = '#5f9e4a'; ctx.beginPath(); ctx.ellipse(top[0] + dx * K, top[1] + dy * K, r * K, r * K * 0.6, 0, 0, 7); ctx.fill(); }
+  ctx.strokeStyle = '#6b4226'; ctx.lineWidth = K * 0.05; ctx.beginPath(); ctx.moveTo(top[0], top[1]); ctx.lineTo(top[0], top[1] - K * 0.38); ctx.stroke();
+  for (const [dx, dy, r] of [[-0.13, -0.3, 0.12], [0.13, -0.34, 0.12], [-0.08, -0.5, 0.11], [0.09, -0.52, 0.11], [0, -0.62, 0.1]]) { ctx.fillStyle = '#5f9e4a'; ctx.beginPath(); ctx.ellipse(top[0] + dx * K, top[1] + dy * K, r * K, r * K * 0.5, dx * 6, 0, 7); ctx.fill(); }
   hits.shelf = rectFrom([P(0, y0, z), P(0.55, y1, z), P(0, y1, z + 0.7), P(0, y0, z + 0.7)]);
 }
 function spool(x, y, z, r, col, fill) {
@@ -306,13 +306,15 @@ function drawPrinter(L, p, run, i, sel) {
     spool(x + W + 0.04, y + 0.65, z0 + 0.8, 0.26, matCol, 1);
   } else {
     // bed-slinger (Sprout) / bed-slinger + colour changer (Rainbow)
-    const ams = T.look === 'ams';
+    const ams = T.look === 'changer';
     const bx = x0 + 0.1, bw = ams ? 1.15 : 1.35;
     box(bx, y0 + 0.3, z0, bw, 1.05, 0.18, T.body, { left: shade(T.body, -0.1), right: shade(T.body, -0.25) });
-    // column (left)
+    // generic two-column gantry frame (left + right uprights and a top beam)
     box(bx + 0.06, y0 + 0.55, z0 + 0.18, 0.14, 0.16, 1.45, '#e0d8c8', { top: '#f0e8d8' });
-    // spool on top of column
-    if (!ams) spool(bx + 0.13, y0 + 0.62, z0 + 1.82, 0.22, matCol, 1);
+    box(bx + bw - 0.16, y0 + 0.55, z0 + 0.18, 0.14, 0.16, 1.45, '#e0d8c8', { top: '#f0e8d8' });
+    box(bx + 0.06, y0 + 0.55, z0 + 1.63, bw - 0.08, 0.16, 0.1, '#d6cebd', { top: '#f0e8d8' });
+    // spool on a holder in the middle of the top beam
+    if (!ams) { box(bx + bw / 2 - 0.03, y0 + 0.6, z0 + 1.73, 0.06, 0.06, 0.08, '#b8b0a0'); spool(bx + bw / 2, y0 + 0.63, z0 + 1.98, 0.22, matCol, 1); }
     // bed slinging in y
     const bedY = y0 + 0.38 + (printing ? Math.sin(ph * 2.1) * 0.12 : 0);
     box(bx + 0.28, bedY, z0 + 0.18, bw - 0.4, 0.86, 0.05, bedC, { stroke: null });
@@ -327,7 +329,7 @@ function drawPrinter(L, p, run, i, sel) {
     if (pt === 'axis') { const s = P(bx + bw, y0 + 0.66, armZ - tilt); ctx.strokeStyle = '#555'; ctx.lineWidth = 2; ctx.beginPath(); for (let k = 0; k < 6; k++) ctx.lineTo(s[0] + k * 4, s[1] + (k % 2 ? -5 : 5)); ctx.stroke(); }
     onFrontFace(bx + bw - 0.5, y0 + 1.351, z0 + 0.16, () => face(0.4, 0.13, moodOf(p)));
     if (ams) {
-      // AMS-style colour changer: box with 4 spools visible through a smoked lid, tubes to the toolhead
+      // generic colour changer: box with 4 spools visible through a smoked lid, tubes to the toolhead
       const ax = bx + bw + 0.05, ay = y0 + 0.35;
       box(ax, ay, z0, 0.42, 1.0, 0.5, '#e6e0d4');
       const cols = o && o.nc > 1 ? o.colors.concat(D.COLORS).slice(0, 4) : [matCol, '#F4EFE6', '#2B2B2E', '#2FA8A0'];
@@ -531,7 +533,7 @@ function drawBooth(L, run) {
     for (const [lx, ly] of [[0.05, 0.05], [1.3, 0.05], [0.05, 0.75], [1.3, 0.75]]) box(x + lx, y + ly, 0, 0.08, 0.08, 0.55, '#6b4226');
     box(x, y, 0.55, 1.45, 0.9, 0.06, D.PAPAYA, { top: '#ff9a33' });
     box(x, y + 0.88, 0.25, 1.45, 0.02, 0.31, D.PAPAYA);
-    const c = P(x + 0.45, y + 0.45, 0.61); MD.draw(ctx, 'bonsai', null, c[0], c[1], K * 0.17, 1);
+    const c = P(x + 0.45, y + 0.45, 0.61); MD.draw(ctx, 'figure', null, c[0], c[1], K * 0.17, 1);
     const c2 = P(x + 1.05, y + 0.4, 0.61); MD.draw(ctx, 'vase', ['#2FA8A0'], c2[0], c2[1], K * 0.13, 1);
   }
   if (u.showcase) {

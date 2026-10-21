@@ -1,11 +1,11 @@
-# Bonsai Lab
+# Tiny Print Shop
 
 A cozy isometric idle/management game about running a tiny 3D-printing shop.
 Plain HTML5 Canvas + vanilla JS, classic `<script>` tags, no build step, no network, no image files:
 every icon, printer and print is drawn in code, every sound and the music loop are synthesized with WebAudio.
-Font: Fredoka (SIL OFL, subset in `fonts/`).
+Font: Fredoka (SIL OFL, subset in `fonts/`). (Formerly "Bonsai Lab"; renamed to avoid confusion with a printer brand. Old saves migrate automatically.)
 
-**Play:** https://mati-sme.github.io/bonsai-lab/ or double-click `index.html` (works from `file://`).
+**Play:** https://mati-sme.github.io/tiny-print-shop/ or double-click `index.html` (works from `file://`).
 `?speed=10` in the URL gives a fast debug season.
 
 ## The loop
@@ -38,7 +38,7 @@ Font: Fredoka (SIL OFL, subset in `fonts/`).
 | `js/platform.js`, `js/portal-boot.js` | portal SDK layer (CrazyGames SDK v3 only in portal builds) |
 | `sim/sim.js`, `sim/campaign.js` | balance sims |
 | `test/e2e.js`, `test/soak.js`, `test/playtest.js`, `test/sizes.js` | headless tests (Playwright + Chrome) |
-| `tools/build-portals.sh` | `dist/crazygames/bonsai-lab.zip` (Basic Launch, SDK v3) + `dist/itchio/` |
+| `tools/build-portals.sh` | `dist/crazygames/tiny-print-shop.zip` (Basic Launch, SDK v3) + `dist/itchio/` |
 | `tools/portal-test.js` | SDK call-order test of the CrazyGames build on localhost |
 | `tools/cover/` | code-drawn cover art, store videos, store screenshots |
 | `tools/build-zip.sh` | plain zip of the playable files |

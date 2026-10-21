@@ -1,4 +1,4 @@
-/* Bonsai Lab - platform layer. The standalone game (GitHub Pages, file://) loads nothing external: storage is localStorage
+/* Tiny Print Shop - platform layer. The standalone game (GitHub Pages, file://) loads nothing external: storage is localStorage
  * and every hook is a no-op. Portal builds (tools/build-portals.sh) set window.PLATFORM_BACKEND = 'crazygames' and load the
  * CrazyGames SDK v3 before this file; then:
  *   init()          SDK.init() (8 s timeout) -> environment check -> data-module saves -> muteAudio setting

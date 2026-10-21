@@ -1,4 +1,4 @@
-/* Bonsai Lab - visual node maps (in-run upgrades, research, labs). Nodes are DOM buttons over an SVG of connecting paths. */
+/* Tiny Print Shop - visual node maps (in-run upgrades, research, labs). Nodes are DOM buttons over an SVG of connecting paths. */
 (function (root) {
 'use strict';
 function el(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }

@@ -1,4 +1,4 @@
-/* Bonsai Lab - static game data (orders, printers, materials, problems, upgrade/research/lab maps).
+/* Tiny Print Shop - static game data (orders, printers, materials, problems, upgrade/research/lab maps).
  * Classic script: everything hangs off window.BL so the game opens straight from file:// (no modules, no build). */
 (function (root) {
 'use strict';
@@ -23,7 +23,7 @@ const PRINTERS = {
              blurb: 'Open-frame bed-slinger. Cheap, cheerful, a bit slow.', body: '#e9e2d4', accent: PAPAYA },
   kestrel: { id: 'kestrel', name: 'Kestrel', look: 'box',     speed: 1.75, colors: 1, enclosed: true, q: 4.0, cost: 180, icon: 'printer',
              blurb: 'Fast closed-frame CoreXY. Handles ABS, warps less.', body: '#3a3a40', accent: PAPAYA },
-  rainbow: { id: 'rainbow', name: 'Rainbow', look: 'ams',     speed: 1.25, colors: 4, enclosed: false, q: 4.0, cost: 230, icon: 'printer',
+  rainbow: { id: 'rainbow', name: 'Rainbow', look: 'changer',     speed: 1.25, colors: 4, enclosed: false, q: 4.0, cost: 230, icon: 'printer',
              blurb: 'Bed-slinger with a 4-spool colour changer. Multi-colour jobs!', body: '#f2ede4', accent: PAPAYA },
 };
 const PRINTER_ORDER = ['sprout', 'kestrel', 'rainbow'];
@@ -153,5 +153,5 @@ const RENT = { every: 150, base: [60, 140, 260, 340, 400], power: 0.06 };
 const SEASON = 600;
 
 BL.Data = { PAPAYA, COLORS, MATS, MAT_ORDER, PRINTERS, PRINTER_ORDER, ORDERS, PROBLEMS, UPGRADES, RESEARCH, LABS, PERKS, GOALS, RENT, SEASON,
-  SAVE_KEY: 'bonsailab.save.v1', VERSION: '0.2.0' };
+  SAVE_KEY: 'tinyprintshop.save.v1', OLD_SAVE_KEYS: ['bonsailab.save.v1'], VERSION: '0.2.1' };
 })(typeof window !== 'undefined' ? window : globalThis);

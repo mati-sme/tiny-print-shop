@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""portal-build.py - upload-ready HTML5 portal builds of Bonsai Lab (pattern shared with Deep Buddies' portals branch).
+"""portal-build.py - upload-ready HTML5 portal builds of Tiny Print Shop (pattern shared with Deep Buddies' portals branch).
 
 usage: tools/portal-build.py <game-slug> <include>... [--portals crazygames,itchio]
 Output: dist/<portal>/<game>.zip (index.html at the zip root) and the unzipped folder dist/<portal>/<game>/ for testing.

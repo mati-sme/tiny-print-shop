@@ -1,11 +1,11 @@
 // portal-test.js - headless test of the CrazyGames build.   tools/build-portals.sh && node tools/portal-test.js
-// Serves dist/crazygames/bonsai-lab/ on localhost (the SDK runs in its "local" mode there), plays the game like a new
+// Serves dist/crazygames/tiny-print-shop/ on localhost (the SDK runs in its "local" mode there), plays the game like a new
 // player and checks the SDK call order recorded in window.__portalLog:
 //   init -> loadingStart -> loadingStop -> gameplayStart (only after loadingStop) ; pause -> gameplayStop ; resume -> gameplayStart
 //   expo day -> happytime + gameplayStop ; no console errors ; saves go through the SDK data module.
 const http = require('http'), fs = require('fs'), path = require('path');
 const { chromium } = require(path.join(__dirname, '../test/node_modules/playwright-core'));
-const ROOT = path.join(__dirname, '../dist/crazygames/bonsai-lab');
+const ROOT = path.join(__dirname, '../dist/crazygames/tiny-print-shop');
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.woff': 'font/woff', '.svg': 'image/svg+xml', '.txt': 'text/plain' };
 let fails = 0; const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++; };
 const srv = http.createServer((q, s) => {
@@ -56,7 +56,7 @@ const srv = http.createServer((q, s) => {
   let alt = true; let on = false;
   for (const x of l2.filter((y) => y === 'gameplayStart' || y === 'gameplayStop')) { if ((x === 'gameplayStart') === on) alt = false; on = x === 'gameplayStart'; }
   ok(alt, 'gameplayStart/Stop strictly alternate (no duplicates)');
-  const saved = await page.evaluate(() => { try { return !!window.CrazyGames.SDK.data.getItem('bonsai-lab-save-v1') || Object.keys(localStorage).length > 0; } catch (e) { return 'err ' + e.message; } });
+  const saved = await page.evaluate(() => { try { return !!window.CrazyGames.SDK.data.getItem('tiny-print-shop-save-v1') || Object.keys(localStorage).length > 0; } catch (e) { return 'err ' + e.message; } });
   ok(saved === true, 'save written through the SDK data module');
   await page.click('#sumNext', { force: true }); await page.waitForTimeout(1300);
   l2 = await page.evaluate(() => window.__portalLog.slice());

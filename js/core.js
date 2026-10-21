@@ -1,4 +1,4 @@
-/* Bonsai Lab - simulation core. Pure game logic over plain JSON state (so it saves to localStorage as-is and also runs
+/* Tiny Print Shop - simulation core. Pure game logic over plain JSON state (so it saves to localStorage as-is and also runs
  * in Node for balance sims: node sim/sim.js). No DOM in here. Time is in game seconds; the UI calls tick(run, dt). */
 (function (root) {
 'use strict';
