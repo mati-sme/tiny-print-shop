@@ -3,7 +3,7 @@
 A cozy isometric idle/management game about running a tiny 3D-printing shop.
 Plain HTML5 Canvas + vanilla JS, classic `<script>` tags, no build step, no network, no image files:
 every icon, printer and print is drawn in code, every sound and the music loop are synthesized with WebAudio.
-Font: Fredoka (SIL OFL, subset in `fonts/`). (Formerly "Bonsai Lab"; renamed to avoid confusion with a printer brand. Old saves migrate automatically.)
+Font: Fredoka (SIL OFL, subset in `fonts/`).
 
 **Play:** https://mati-sme.github.io/tiny-print-shop/ or double-click `index.html` (works from `file://`).
 `?speed=10` in the URL gives a fast debug season.

@@ -210,7 +210,7 @@ p .ic, .small .ic, small .ic { width: 18px; height: 18px; vertical-align: -0.25e
 /* ---------- home ---------- */
 #home { position: absolute; inset: 0; display: flex; flex-direction: column; }
 .hometop { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: calc(10px + env(safe-area-inset-top)) 12px 10px; background: linear-gradient(rgba(42,26,16,.95), rgba(42,26,16,.5)); }
-.logo, .bootlogo { font-size: 32px; font-weight: 700; letter-spacing: .5px; text-shadow: 0 3px 0 rgba(0,0,0,.5); white-space: nowrap; }
+.logo, .bootlogo { font-size: clamp(21px, 6.2vw, 32px); font-weight: 700; letter-spacing: .5px; text-shadow: 0 3px 0 rgba(0,0,0,.5); white-space: nowrap; }
 .lg-b { color: #fff4e2; } .lg-l { color: var(--papaya); }
 .wallet { display: flex; gap: 6px; align-items: center; }
 .tab { flex: 1; min-height: 0; display: flex; flex-direction: column; position: relative; }
