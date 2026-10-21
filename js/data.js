@@ -43,7 +43,7 @@ const ORDERS = [
   { id: 'vent',    name: 'Car vent clip',      icon: 'o:vent', mat: 'ABS',  nc: 1, q: 2.5, work: 36,  g: 45,  pay: 50,  shape: 'wedge', w: 2 },
   { id: 'bracket', name: 'Engine-bay bracket', icon: 'o:bracket', mat: 'ABS',  nc: 1, q: 3.5, work: 70,  g: 140, pay: 104, shape: 'box',   w: 1.5 },
   { id: 'insert',  name: 'Board-game inserts', icon: 'o:insert', mat: 'PLA',  nc: 2, q: 2,   work: 62,  g: 200, pay: 82,  shape: 'box',   w: 2 },
-  { id: 'pot',     name: 'Bonsai pot',         icon: 'o:pot', mat: 'PETG', nc: 1, q: 2,   work: 40,  g: 90,  pay: 46,  shape: 'pot',   w: 2.5 },
+  { id: 'pot',     name: 'Plant pot',          icon: 'o:pot', mat: 'PETG', nc: 1, q: 2,   work: 40,  g: 90,  pay: 46,  shape: 'pot',   w: 2.5 },
   { id: 'litho',   name: 'Lithophane lamp',    icon: 'o:litho', mat: 'PLA',  nc: 1, q: 4,   work: 58,  g: 70,  pay: 74,  shape: 'cyl',   w: 1.5 },
   { id: 'sign',    name: 'Café logo sign',     icon: 'o:sign', mat: 'PLA',  nc: 3, q: 3,   work: 56,  g: 110, pay: 98,  shape: 'flat',  w: 2 },
   { id: 'fidget',  name: 'Fidget toys',        icon: 'o:fidget', mat: 'PLA',  nc: 1, q: 2,   work: 30,  g: 50,  pay: 36,  shape: 'gear',  w: 2.5, any: true },

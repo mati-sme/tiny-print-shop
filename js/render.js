@@ -306,15 +306,15 @@ function drawPrinter(L, p, run, i, sel) {
     spool(x + W + 0.04, y + 0.65, z0 + 0.8, 0.26, matCol, 1);
   } else {
     // bed-slinger (Sprout) / bed-slinger + colour changer (Rainbow)
-    const ams = T.look === 'changer';
-    const bx = x0 + 0.1, bw = ams ? 1.15 : 1.35;
+    const chg = T.look === 'changer';
+    const bx = x0 + 0.1, bw = chg ? 1.15 : 1.35;
     box(bx, y0 + 0.3, z0, bw, 1.05, 0.18, T.body, { left: shade(T.body, -0.1), right: shade(T.body, -0.25) });
     // generic two-column gantry frame (left + right uprights and a top beam)
     box(bx + 0.06, y0 + 0.55, z0 + 0.18, 0.14, 0.16, 1.45, '#e0d8c8', { top: '#f0e8d8' });
     box(bx + bw - 0.16, y0 + 0.55, z0 + 0.18, 0.14, 0.16, 1.45, '#e0d8c8', { top: '#f0e8d8' });
     box(bx + 0.06, y0 + 0.55, z0 + 1.63, bw - 0.08, 0.16, 0.1, '#d6cebd', { top: '#f0e8d8' });
     // spool on a holder in the middle of the top beam
-    if (!ams) { box(bx + bw / 2 - 0.03, y0 + 0.6, z0 + 1.73, 0.06, 0.06, 0.08, '#b8b0a0'); spool(bx + bw / 2, y0 + 0.63, z0 + 1.98, 0.22, matCol, 1); }
+    if (!chg) { box(bx + bw / 2 - 0.03, y0 + 0.6, z0 + 1.73, 0.06, 0.06, 0.08, '#b8b0a0'); spool(bx + bw / 2, y0 + 0.63, z0 + 1.98, 0.22, matCol, 1); }
     // bed slinging in y
     const bedY = y0 + 0.38 + (printing ? Math.sin(ph * 2.1) * 0.12 : 0);
     box(bx + 0.28, bedY, z0 + 0.18, bw - 0.4, 0.86, 0.05, bedC, { stroke: null });
@@ -328,7 +328,7 @@ function drawPrinter(L, p, run, i, sel) {
     toolhead(hx, y0 + 0.55, armZ - 0.2 - tilt * (hx - bx) / bw, p, matCol, printing);
     if (pt === 'axis') { const s = P(bx + bw, y0 + 0.66, armZ - tilt); ctx.strokeStyle = '#555'; ctx.lineWidth = 2; ctx.beginPath(); for (let k = 0; k < 6; k++) ctx.lineTo(s[0] + k * 4, s[1] + (k % 2 ? -5 : 5)); ctx.stroke(); }
     onFrontFace(bx + bw - 0.5, y0 + 1.351, z0 + 0.16, () => face(0.4, 0.13, moodOf(p)));
-    if (ams) {
+    if (chg) {
       // generic colour changer: box with 4 spools visible through a smoked lid, tubes to the toolhead
       const ax = bx + bw + 0.05, ay = y0 + 0.35;
       box(ax, ay, z0, 0.42, 1.0, 0.5, '#e6e0d4');
